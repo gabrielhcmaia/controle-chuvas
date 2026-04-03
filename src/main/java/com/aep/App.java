@@ -50,15 +50,32 @@ public class App
                 case 1:
                     System.out.printf("===CRIANDO SOLICITAÇÃO===");
 
+                    Categoria[] categorias = Categoria.values();
+                    Categoria categoriaSelecionada = null;
+
+                    while(categoriaSelecionada == null){
                     System.out.printf("Categorias: \n");
-                    for(Categoria c: Categoria.values()){
-                        System.out.println("- " + c);
+                    for(int index = 0; index<categorias.length; index++){
+                        System.out.println((index + 1 )+" - " + categorias[index]);
                     }
+                    System.out.println("Seleciona a categoria\n");
+                    int categoriaOption = scanner.nextInt();
+
+                    if(categoriaOption >= 1 && categoriaOption <= categorias.length){
+                        categoriaSelecionada = categorias[categoriaOption - 1];
+
+                    } else {
+                        System.out.println("Categoria inválida\n");
+                    }
+                    }
+
+
 
             }
 
 
-        }
+        } while (opcao != 5);
+        scanner.close();
 
     }
 }
