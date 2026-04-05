@@ -1,6 +1,5 @@
 package com.aep;
 
-import com.aep.enums.Categoria;
 import com.aep.services.SolicitacaoService;
 
 import java.util.Scanner;
@@ -30,7 +29,7 @@ public class App
 
     public static void main( String[] args )
     {
-        SolicitacaoService service = new SolicitacaoService();
+        SolicitacaoService solicitacaoService = new SolicitacaoService();
         Scanner scanner = new Scanner(System.in);
         int opcao;
 
@@ -48,34 +47,31 @@ public class App
 
             switch (opcao){
                 case 1:
-                    System.out.printf("===CRIANDO SOLICITAÇÃO===");
+                    solicitacaoService.criarSolicitacaoFlow(scanner);
+                    break;
 
-                    Categoria[] categorias = Categoria.values();
-                    Categoria categoriaSelecionada = null;
+                case 2:
+                    clearConsole();
+                    solicitacaoService.buscarSolicitacaoFlow(scanner);
+                    break;
 
-                    while(categoriaSelecionada == null){
-                    System.out.printf("Categorias: \n");
-                    for(int index = 0; index<categorias.length; index++){
-                        System.out.println((index + 1 )+" - " + categorias[index]);
-                    }
-                    System.out.println("Seleciona a categoria\n");
-                    int categoriaOption = scanner.nextInt();
+                case 3:
+                    clearConsole();
+                    solicitacaoService.listarSolicitacoesFlow();
+                    break;
 
-                    if(categoriaOption >= 1 && categoriaOption <= categorias.length){
-                        categoriaSelecionada = categorias[categoriaOption - 1];
+                case 4:
+                    clearConsole();
+                    solicitacaoService.alterarStatusFlow(scanner);
+                    break;
 
-                    } else {
-                        System.out.println("Categoria inválida\n");
-                    }
-                    }
-
-
-
+                case 5:
+                    clearConsole();
+                    System.out.println("Saindo ...\n");
+                    break;
             }
-
 
         } while (opcao != 5);
         scanner.close();
-
     }
 }
