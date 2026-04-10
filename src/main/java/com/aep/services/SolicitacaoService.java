@@ -31,7 +31,7 @@ public class SolicitacaoService {
     }
 
     public void criarSolicitacaoFlow(Scanner scanner){
-        System.out.printf("===CRIANDO SOLICITAÇÃO===");
+        System.out.printf("===CRIANDO SOLICITAÇÃO===\n");
 
         Categoria[] categorias = Categoria.values();
         Categoria categoriaSelecionada = null;
@@ -41,7 +41,7 @@ public class SolicitacaoService {
             for(int index = 0; index<categorias.length; index++){
                 System.out.println((index + 1 )+" - " + categorias[index]);
             }
-            System.out.println("Seleciona a categoria\n");
+            System.out.println("Seleciona a categoria");
             int categoriaOption = scanner.nextInt();
             scanner.nextLine();
 
@@ -52,18 +52,18 @@ public class SolicitacaoService {
             }
         }
 
-        System.out.println("Nome do usuário: \n");
+        System.out.println("\nNome do usuário: ");
         String userName = scanner.nextLine();
 
-        System.out.println("RG: \n");
+        System.out.println("\nRG: ");
         String userRg = scanner.nextLine();
 
-        System.out.println("Endereço: \n");
+        System.out.println("\nEndereço:");
         String userAddress = scanner.nextLine();
 
         Usuario user = new Usuario(userName, userRg, userAddress);
 
-        System.out.println("Comentario(Descreva o problema): \n");
+        System.out.println("\nComentario(Descreva o problema): ");
         String comentario = scanner.nextLine();
 
         Solicitacao solicitacao = criarSolicitacao(
